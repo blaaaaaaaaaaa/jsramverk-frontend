@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import React, { useState } from 'react';
+import { TrixEditor } from 'react-trix';
 import './App.css';
+import 'trix';
+import "trix/dist/trix.css";
 
 function App() {
+  const [newHtml, setHtml] = useState("");
+
+  const handlerChange = (html) => {
+    setHtml(html);
+  };
+  const handlerSave = () => {
+    console.log(newHtml);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <h1 className="editor-header">Text Editor</h1>
+        <button type="button" className="trix-button" data-trix-attribute="save" title="Save" tabIndex="-1" onClick={handlerSave}>Save</button>
+      </div>
+        <div className='trix-container'>
+          <TrixEditor
+          className='trix-content'
+          autoFocus={true}
+          placeholder='Write something here'
+          value=''
+          onChange={handlerChange}
+        />
+      </div>
+    </>
   );
 }
 
