@@ -1,36 +1,50 @@
-// import logo from './logo.svg';
-import React, { useState } from 'react';
-import { TrixEditor } from 'react-trix';
-import './App.css';
+// React
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'trix';
 import "trix/dist/trix.css";
 
-function App() {
-  const [newHtml, setHtml] = useState("");
+// Components
+import Header from "./components/Header";
+import NewDoc from './components/NewDoc';
+import UpdateDoc from './components/UpdateDoc';
 
-  const handlerChange = (html) => {
-    setHtml(html);
-  };
-  const handlerSave = () => {
-    console.log(newHtml);
-  };
+// Models
+import docsModel from './models/docs';
+
+// Styles
+import './App.css';
+
+function App() {
+  const [docs, setDocs] = useState([]);
+
+  async function fetchDocs() {
+    const allDocs = await docsModel.getAllDocs();
+
+    setDocs(allDocs);
+  }
+
+  useEffect(() => {
+    (async () => {
+        await fetchDocs();
+    })();
+}, []);
 
   return (
-    <>
+    <div>
       <div className="App">
         <h1 className="editor-header">Text Editor</h1>
-        <button type="button" className="trix-button" data-trix-attribute="save" title="Save" tabIndex="-1" onClick={handlerSave}>Save</button>
       </div>
         <div className='trix-container'>
-          <TrixEditor
-          className='trix-content'
-          autoFocus={true}
-          placeholder='Write something here'
-          value=''
-          onChange={handlerChange}
-        />
+        <Router>
+            <Routes>
+                <Route path="/" element={<Header />} />
+                <Route path="docs/create" element={<NewDoc submitFunction={fetchDocs} />} />
+                <Route path="docs/update" element={<UpdateDoc submitFunction={fetchDocs} docs={docs} />} />
+            </Routes>
+        </Router>
       </div>
-    </>
+    </div>
   );
 }
 
