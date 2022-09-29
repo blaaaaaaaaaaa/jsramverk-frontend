@@ -1,9 +1,9 @@
 // Reacts
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { TrixEditor } from "react-trix";
 import "trix";
 import "trix/dist/trix.css";
+import { TrixEditor } from "react-trix";
 
 // Models
 import docsModel from '../models/docs';

@@ -1,19 +1,19 @@
 // React
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import 'trix';
+import "trix";
 import "trix/dist/trix.css";
 
 // Components
 import Header from "./components/Header";
-import NewDoc from './components/NewDoc';
-import UpdateDoc from './components/UpdateDoc';
+import NewDoc from "./components/NewDoc";
+import UpdateDoc from "./components/UpdateDoc";
 
 // Models
-import docsModel from './models/docs';
+import docsModel from "./models/docs";
 
 // Styles
-import './App.css';
+import "./App.css";
 
 function App() {
   const [docs, setDocs] = useState([]);
