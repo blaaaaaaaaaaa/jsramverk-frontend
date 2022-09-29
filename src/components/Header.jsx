@@ -3,9 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Styles
-import '../App.css';
+import './../App.css';
 
-function Header() {
+const Header = () => {
 
     return (
         <div className="container">
