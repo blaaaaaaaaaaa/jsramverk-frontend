@@ -32,13 +32,13 @@ export default function App() {
     <div>
       <div className="App">
         <h1 className="editor-header">Text Editor</h1>
-        <div className="trix-container">
-          <Routes>
-            <Route exact path="/" element={<Header />} />
-            <Route path="/create" element={<NewDoc submitFunction={fetchDocs} />} />
-            <Route path="/update" element={<UpdateDoc submitFunction={fetchDocs} docs={docs} />} />
-          </Routes>
-        </div>
+      </div>
+      <div className="trix-container">
+        <Routes>
+          <Route exact path="/" element={<Header />} />
+          <Route path="/create" element={<NewDoc submitFunction={fetchDocs} />} />
+          <Route path="/update" element={<UpdateDoc submitFunction={fetchDocs} docs={docs} />} />
+        </Routes>
       </div>
     </div>
   );
