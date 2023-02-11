@@ -16,6 +16,10 @@ trix-editor {
   text-align: left;
 }
 
+h2 {
+  padding-bottom: 10px;
+}
+
 .editor-header {
   background-color: #071c46;
   min-height: 50vh;
@@ -31,6 +35,7 @@ trix-editor {
 
 .trix-container {
   width: auto;
+  height: 500px;
   margin-left: 0.2em;
   margin-right: 0.2em;
   align-items: center;

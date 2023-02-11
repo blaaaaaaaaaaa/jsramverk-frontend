@@ -1,6 +1,6 @@
 const docsModel = {
     baseUrl: window.location.href.includes("localhost") ?
-        "http://localhost:1337/docs" :
+        "http://localhost:1337" :
         "https://jsramverk-editor-isas21.azurewebsites.net/docs",
     getAllDocs: async function getAllDocs() {
         const response = await fetch(`${docsModel.baseUrl}/`);
@@ -11,7 +11,7 @@ const docsModel = {
         return docs.data
     },
     getSingleDocs: async function getSingleDocs(id) {
-        const response = await fetch(`${docsModel.baseUrl}/docs/${id}`);
+        const response = await fetch(`${docsModel.baseUrl}/${id}`);
 
         // console.log(window.location.href);
 

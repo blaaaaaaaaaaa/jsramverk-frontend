@@ -1,8 +1,6 @@
 // React
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "trix";
-import "trix/dist/trix.css";
+import { Routes, Route } from "react-router-dom";
 
 // Components
 import Header from "./components/Header";
@@ -15,7 +13,7 @@ import docsModel from "./models/docs";
 // Styles
 import "./App.css";
 
-function App() {
+export default function App() {
   const [docs, setDocs] = useState([]);
 
   async function fetchDocs() {
@@ -28,24 +26,20 @@ function App() {
     (async () => {
         await fetchDocs();
     })();
-}, []);
+  }, []);
 
   return (
     <div>
       <div className="App">
         <h1 className="editor-header">Text Editor</h1>
-      </div>
-        <div className='trix-container'>
-        <Router>
-            <Routes>
-                <Route path="/" element={<Header />} />
-                <Route path="docs/create" element={<NewDoc submitFunction={fetchDocs} />} />
-                <Route path="docs/update" element={<UpdateDoc submitFunction={fetchDocs} docs={docs} />} />
-            </Routes>
-        </Router>
+        <div className="trix-container">
+          <Routes>
+            <Route exact path="/" element={<Header />} />
+            <Route path="/create" element={<NewDoc submitFunction={fetchDocs} />} />
+            <Route path="/update" element={<UpdateDoc submitFunction={fetchDocs} docs={docs} />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
 }
-
-export default App;
